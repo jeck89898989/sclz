@@ -2748,14 +2748,14 @@ class App {
         
         // Get user-selected display options
         const showName = document.getElementById('show-name').checked;
-        const showRoot = document.getElementById('show-root').checked;
-        const showSpelling = document.getElementById('show-spelling').checked;
-        const showQuality = document.getElementById('show-quality').checked;
-        const showTonic = document.getElementById('show-tonic').checked;
-        const showDominant = document.getElementById('show-dominant').checked;
-        const showModes = document.getElementById('show-modes').checked;
-        const showInversions = document.getElementById('show-inversions').checked;
-        const showDescription = document.getElementById('show-description').checked;
+        const showRoot = document.getElementById('show-root').unchecked;
+        const showSpelling = document.getElementById('show-spelling').unchecked;
+        const showQuality = document.getElementById('show-quality').unchecked;
+        const showTonic = document.getElementById('show-tonic').unchecked;
+        const showDominant = document.getElementById('show-dominant').unchecked;
+        const showModes = document.getElementById('show-modes').unchecked;
+        const showInversions = document.getElementById('show-inversions').unchecked;
+        const showDescription = document.getElementById('show-description').unchecked;
         
         // Create content container for theory info
         let title = '';
