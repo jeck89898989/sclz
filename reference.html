@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scales Thesaurus - Reference Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .reference-container {
+            padding: 30px 20px;
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+
+        .reference-container h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            font-size: 2.5em;
+        }
+
+        .reference-container h2 {
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 5px;
+        }
+        
+        .reference-container h3 {
+            color: var(--secondary-color);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        .reference-container p {
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .reference-container ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            list-style: disc;
+        }
+
+        .reference-container li {
+            margin-bottom: 10px;
+        }
+        
+        .reference-container code {
+            background-color: rgba(0,0,0,0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--accent-color);
+        }
+
+        .return-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .return-button:hover {
+            background-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="top-header">
+        <div class="top-header-content">
+            <div class="header-nav">
+                <a href="home.html" class="header-link">Home</a>
+                <a href="scales.html" class="header-link">Scales</a>
+                <a href="chords.html" class="header-link">Chords</a>
+                <a href="intervals.html" class="header-link">Intervals</a>
+                <a href="data.html" class="header-link">Data</a>
+                <a href="reference.html" class="header-link">Reference</a>
+            </div>
+            <div class="sidebar-toggle-container">
+                <button id="sidebar-toggle" aria-expanded="false" onclick="window.location.href='index.html'">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="sr-only">Go to App</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="reference-container">
+        <h1>Reference Guide</h1>
+        <p>This guide provides a comprehensive overview of all the features available in the Scales Thesaurus application. Use it to understand how to get the most out of our powerful music theory tools.</p>
+
+        <h2>The Main Application (Interactive Fretboard)</h2>
+        <p>The core of the site is the interactive fretboard page (<code>index.html</code>), where you can visualize and interact with musical patterns.</p>
+        
+        <h3>Core Controls (Page Footer)</h3>
+        <p>The main controls for the fretboard are located in the footer at the bottom of the page. These allow you to define what pattern is displayed.</p>
+        <ul>
+            <li><strong>Key:</strong> Sets the root note for the scale, chord, or interval.</li>
+            <li><strong>Pattern Type:</strong> Choose whether you want to display a <code>Scale</code>, <code>Chord</code>, <code>Interval</code>, or a <code>Grid</code> pattern.</li>
+            <li><strong>Pattern:</strong> Select the specific pattern to display (e.g., Major, minor7, Perfect 5th). This list updates based on the Pattern Type.</li>
+            <li><strong>Start/End Fret:</strong> Defines the visible range of the fretboard.</li>
+            <li><strong>Display Mode:</strong> Changes the text displayed on the notes (e.g., <code>Intervals</code> like R, 3, 5; or <code>Notes</code> like C, E, G).</li>
+            <li><strong>Color/Page Theme & Font Size:</strong> Customize the visual appearance of the fretboard and the entire page.</li>
+        </ul>
+        
+        <h3>Sidebar Features</h3>
+        <p>The sidebar contains advanced customization and functionality. Click the hamburger icon (☰) in the top header to toggle it.</p>
+        <ul>
+            <li><strong>Music Theory:</strong> Control which details (like spelling, quality, modes) are shown in the Theory Info Panel below the fretboard.</li>
+            <li><strong>Appearance:</strong> A deep dive into visual customization. Here you can change the size, shape, font, and effects of notes, as well as the style of the strings and frets. You can also define your own <code>Custom</code> color theme.</li>
+            <li><strong>Instrument Setup:</strong> Choose from presets like guitar or bass, or create your own instrument by setting the number of strings and their individual tunings. You can also control which strings display notes and set unique start/end frets for each string.</li>
+            <li><strong>Chromatic Tuner:</strong> A simple tuner with buttons to play any of the 12 chromatic notes.</li>
+            <li><strong>Slideshow:</strong> Create a collection of diagrams. Use the "Add to Slideshow" button to add the current fretboard view to your slideshow, which you can then play back, loop, and export.</li>
+            <li><strong>Melodic Patterns:</strong> Apply rhythmic and melodic sequences to the currently selected scale for practice. This is a great tool for developing technique and learning scales in a more musical way.</li>
+            <li><strong>Export:</strong> Perform bulk exports. You can save diagrams of every scale, chord, or interval for all 12 keys as JPG images, either individually or bundled into a ZIP file for convenience.</li>
+            <li><strong>Pattern Generator:</strong> Quickly generate a list of all scales, chords, or intervals for the currently selected key. You can then view them or add them to your slideshow.</li>
+        </ul>
+
+        <h3>Interacting with the Fretboard</h3>
+        <ul>
+            <li><strong>Clicking a Note:</strong> Click on any note marker on the fretboard to open an edit menu. You can change its color, shape, or set it as the new root note for the current pattern. Use <code>Ctrl/Cmd + Click</code> for multi-select and <code>Shift + Click</code> to select all notes of the same type.</li>
+            <li><strong>Action Buttons:</strong> Below the fretboard, you'll find buttons to <code>Play Pattern</code> (hear it with the synth), <code>Add to Slideshow</code>, and <code>Export Diagram</code> (save a single image).</li>
+        </ul>
+
+        <h2>Explorer Pages</h2>
+        <p>The Scales, Chords, and Intervals pages provide browsable and filterable lists of all the patterns available in the application.</p>
+        <ul>
+            <li><strong>Filtering:</strong> Use the filter controls to find patterns that meet specific criteria. For example, on the Scales page, you can find all scales that include a <code>b3</code> (minor third) but exclude a <code>7</code> (major seventh).</li>
+            <li><strong>Favorites:</strong> On the Scales page, you can click the star icon (☆) to mark a scale as a favorite. Then, you can use the "Show Favorites Only" filter to see your saved list.</li>
+            <li><strong>View on Fretboard:</strong> Each item has a link to open it directly in the main interactive fretboard application for visualization and practice.</li>
+        </ul>
+
+        <h2>Data Management Page</h2>
+        <p>The <code>Data</code> page allows advanced users to view and even edit the core music theory data that powers the application. You can change interval names, scale formulas, etc. Changes are saved to your browser's local storage. You can also export the data tables to XLSX (Excel) files or reset all data back to the application defaults.</p>
+        
+        <div style="text-align: center;">
+            <a href="index.html" class="return-button">Explore the Interactive Fretboard</a>
+        </div>
+    </div>
+</body>
+</html>
+
