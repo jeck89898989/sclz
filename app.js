@@ -2124,7 +2124,7 @@ class App {
         sizeInput.id = 'note-size';
         sizeInput.min = '8';
         sizeInput.max = '30';
-        sizeInput.value = '8';
+        sizeInput.value = '10';
         
         sizeGroup.appendChild(sizeLabel);
         sizeGroup.appendChild(sizeInput);
