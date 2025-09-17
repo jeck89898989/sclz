@@ -199,12 +199,11 @@
         <div class="top-header-content">
             
             <div class="header-nav">
-                <a href="home.html" class="header-link">Home</a>
                 <a href="scales.html" class="header-link">Scales</a>
                 <a href="chords.html" class="header-link">Chords</a>
                 <a href="intervals.html" class="header-link">Intervals</a>
                 <a href="data.html" class="header-link">Data</a>
-                <a href="reference.html" class="header-link">Reference</a>
+                <a href="about.html" class="header-link">About</a>
             </div>
             <div class="sidebar-toggle-container">
                 <button id="sidebar-toggle" aria-expanded="false" onclick="window.location.href='index.html'">
@@ -226,14 +225,8 @@
         <!-- Filter Section for Scales -->
         <div class="scale-filters">
             <div class="filter-section">
-                <h2>Must Include Intervals</h2>
-                <div class="interval-filter-list" id="include-interval-filter-list">
-                    <!-- Interval filter checkboxes will be populated here -->
-                </div>
-            </div>
-            <div class="filter-section">
-                <h2>Must Exclude Intervals</h2>
-                <div class="interval-filter-list" id="exclude-interval-filter-list">
+                <h2>Filter by Intervals Included</h2>
+                <div class="interval-filter-list" id="interval-filter-list">
                     <!-- Interval filter checkboxes will be populated here -->
                 </div>
             </div>
@@ -259,8 +252,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const musicTheory = new MusicTheory();
             const scaleListContainer = document.getElementById('scale-list');
-            const includeIntervalFilterListContainer = document.getElementById('include-interval-filter-list');
-            const excludeIntervalFilterListContainer = document.getElementById('exclude-interval-filter-list');
+            const intervalFilterListContainer = document.getElementById('interval-filter-list');
             const clearFiltersButton = document.getElementById('clear-filters');
             const showFavoritesCheckbox = document.getElementById('show-favorites-only');
 
@@ -361,29 +353,23 @@
                 allScaleData.push({ id, data, element: scaleItemElement });
             });
 
-            // Populate Interval Filters for both Include and Exclude sections
+            // Populate Interval Filters
             const sortedIntervals = Object.entries(intervals).sort(([, a], [, b]) => a.semitones - b.semitones);
-            
-            function populateFilterList(container, prefix) {
-                sortedIntervals.forEach(([id, data]) => {
-                    const filterItem = document.createElement('div');
-                    filterItem.className = 'interval-filter-item';
-                    const checkbox = document.createElement('input');
-                    checkbox.type = 'checkbox';
-                    checkbox.id = `${prefix}-filter-${id}`;
-                    checkbox.value = id;
-                    checkbox.addEventListener('change', filterAndSortScales);
-                    const label = document.createElement('label');
-                    label.htmlFor = `${prefix}-filter-${id}`;
-                    label.textContent = data.shortName;
-                    filterItem.appendChild(checkbox);
-                    filterItem.appendChild(label);
-                    container.appendChild(filterItem);
-                });
-            }
-
-            populateFilterList(includeIntervalFilterListContainer, 'include');
-            populateFilterList(excludeIntervalFilterListContainer, 'exclude');
+            sortedIntervals.forEach(([id, data]) => {
+                const filterItem = document.createElement('div');
+                filterItem.className = 'interval-filter-item';
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `filter-${id}`;
+                checkbox.value = id;
+                checkbox.addEventListener('change', filterAndSortScales);
+                const label = document.createElement('label');
+                label.htmlFor = `filter-${id}`;
+                label.textContent = data.shortName;
+                filterItem.appendChild(checkbox);
+                filterItem.appendChild(label);
+                intervalFilterListContainer.appendChild(filterItem);
+            });
 
              // Add event listener for the favorite filter checkbox
             showFavoritesCheckbox.addEventListener('change', filterAndSortScales);
@@ -408,10 +394,8 @@
 
             // Filter and Sort Function for Scales
             function filterAndSortScales() {
-                const selectedIncludeIntervals = Array.from(includeIntervalFilterListContainer.querySelectorAll('input[type="checkbox"]:checked'))
-                                                     .map(cb => cb.value);
-                const selectedExcludeIntervals = Array.from(excludeIntervalFilterListContainer.querySelectorAll('input[type="checkbox"]:checked'))
-                                                     .map(cb => cb.value);
+                const selectedIntervals = Array.from(intervalFilterListContainer.querySelectorAll('input[type="checkbox"]:checked'))
+                                               .map(cb => cb.value);
                 const showOnlyFavorites = showFavoritesCheckbox.checked;
 
                 // 1. Filter the data
@@ -419,18 +403,14 @@
                     const scaleIntervals = itemData.data.intervals; // Access intervals from stored data
                     const scaleId = itemData.id;
 
-                    // Check Include Interval Filter
-                    const passesIncludeFilter = selectedIncludeIntervals.length === 0 ||
-                                                 selectedIncludeIntervals.every(filterInterval => scaleIntervals.includes(filterInterval));
-                    
-                    // Check Exclude Interval Filter
-                    const passesExcludeFilter = selectedExcludeIntervals.length === 0 ||
-                                                 !selectedExcludeIntervals.some(filterInterval => scaleIntervals.includes(filterInterval));
+                    // Check Interval Filter
+                    const passesIntervalFilter = selectedIntervals.length === 0 ||
+                                                 selectedIntervals.every(filterInterval => scaleIntervals.includes(filterInterval));
 
                     // Check Favorite Filter
                     const passesFavoriteFilter = !showOnlyFavorites || favoriteScales[scaleId];
 
-                    return passesIncludeFilter && passesExcludeFilter && passesFavoriteFilter;
+                    return passesIntervalFilter && passesFavoriteFilter;
                 });
 
                 // 2. Sort the filtered data (alphabetically by name)
@@ -455,8 +435,7 @@
 
             // Clear Filters Button
             clearFiltersButton.addEventListener('click', () => {
-                includeIntervalFilterListContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-                excludeIntervalFilterListContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+                intervalFilterListContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
                 showFavoritesCheckbox.checked = false;
                 filterAndSortScales(); // Re-filter and sort
             });

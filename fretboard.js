@@ -28,7 +28,7 @@ class Fretboard {
             noteShape: 'circle', // circle, square, diamond, triangle, hexagon
             noteFont: 'Tahoma', // font family
             noteFontSize: 12, // font size in px
-            noteEffect: 'Blur', // none, glow, shadow, outline, highlight
+            noteEffect: 'none', // none, glow, shadow, outline, highlight
             noteGradient: false, // true to use gradient, false for solid color
             noteOffset: 0, // offset from string position
             visibleStrings: undefined,

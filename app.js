@@ -2580,14 +2580,14 @@ class App {
         // Existing checkboxes for theory info properties
         const properties = [
             { id: 'show-name', label: 'Name', checked: true },
-            { id: 'show-root', label: 'Root Note', checked: true },
-            { id: 'show-spelling', label: 'Scale/Chord Spelling', checked: true },
-            { id: 'show-quality', label: 'Quality', checked: true },
-            { id: 'show-tonic', label: 'Tonic Function', checked: true },
-            { id: 'show-dominant', label: 'Dominant Function', checked: true },
-            { id: 'show-modes', label: 'Modes', checked: true },
-            { id: 'show-inversions', label: 'Inversions', checked: true },
-            { id: 'show-description', label: 'Description', checked: true },
+            { id: 'show-root', label: 'Root Note', checked: false },
+            { id: 'show-spelling', label: 'Scale/Chord Spelling', checked: false },
+            { id: 'show-quality', label: 'Quality', checked: false },
+            { id: 'show-tonic', label: 'Tonic Function', checked: false },
+            { id: 'show-dominant', label: 'Dominant Function', checked: false },
+            { id: 'show-modes', label: 'Modes', checked: false },
+            { id: 'show-inversions', label: 'Inversions', checked: false },
+            { id: 'show-description', label: 'Description', checked: false },
             { id: 'hide-about-section', label: 'Hide About Section', checked: true }
         ];
         
@@ -2748,14 +2748,14 @@ class App {
         
         // Get user-selected display options
         const showName = document.getElementById('show-name').checked;
-        const showRoot = document.getElementById('show-root').unchecked;
-        const showSpelling = document.getElementById('show-spelling').unchecked;
-        const showQuality = document.getElementById('show-quality').unchecked;
-        const showTonic = document.getElementById('show-tonic').unchecked;
-        const showDominant = document.getElementById('show-dominant').unchecked;
-        const showModes = document.getElementById('show-modes').unchecked;
-        const showInversions = document.getElementById('show-inversions').unchecked;
-        const showDescription = document.getElementById('show-description').unchecked;
+        const showRoot = document.getElementById('show-root').checked;
+        const showSpelling = document.getElementById('show-spelling').checked;
+        const showQuality = document.getElementById('show-quality').checked;
+        const showTonic = document.getElementById('show-tonic').checked;
+        const showDominant = document.getElementById('show-dominant').checked;
+        const showModes = document.getElementById('show-modes').checked;
+        const showInversions = document.getElementById('show-inversions').checked;
+        const showDescription = document.getElementById('show-description').checked;
         
         // Create content container for theory info
         let title = '';
